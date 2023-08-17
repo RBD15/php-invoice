@@ -1,18 +1,15 @@
 <?php 
 namespace App\Controllers;
 
-use App\Invoice\Domain\ChatLicense;
-use App\Invoice\Domain\WhatsappConnector;
+use App\Invoice\Application\Billing;
 
 final class HomeController
 {
   public function index()
   {
-    // $billingItem = new ChatLicense();
-    // $result = $billingItem->get();
-    $billingItem = new WhatsappConnector();
-    $result = $billingItem->get();
-    return $result;
+    $billing = new Billing();
+    
+    include __DIR__.'/../Views/Invoice.php';
   }
 }
 

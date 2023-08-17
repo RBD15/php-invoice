@@ -8,10 +8,11 @@ error_reporting(E_ALL);
 
 try {
   $request = new Request();
-  createResponse($request->handler(),200);
+  $request->handler();
+  // createResponse($request->handler(),200);
 } catch (Exception $e) {
   createResponse($e->getMessage(),$e->getCode());
 }
-// include('../App/Views/Invoice.php');
+
 
 ?>
