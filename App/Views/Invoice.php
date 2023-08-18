@@ -34,6 +34,7 @@ $subTotal = 0;
 $discount = 0;
 $shippingCost = 0;
 $taxCost = 0;
+$currency = $billing->getCurrency();
 foreach($billing->getItems() as $key => $item){
   $subTotal = $subTotal+ (int) $item->getTotal();
   $billingRows = $billingRows . '<tr>
@@ -128,30 +129,30 @@ $total = $subTotal - $discount;
                                     <?php echo $billingRows;?>
                                     <tr>
                                         <th scope="row" colspan="4" class="text-end">Sub Total</th>
-                                        <td class="text-end"><?php echo $subTotal?></td>
+                                        <td class="text-end"><?php echo $subTotal.$currency?></td>
                                     </tr>
                                     
                                     <tr>
                                         <th scope="row" colspan="4" class="border-0 text-end">
                                             Discount :</th>
-                                        <td class="border-0 text-end">- <?php echo $discount?></td>
+                                        <td class="border-0 text-end">- <?php echo $discount.$currency?></td>
                                     </tr>
                                     
                                     <tr>
                                         <th scope="row" colspan="4" class="border-0 text-end">
                                             Shipping Charge :</th>
-                                        <td class="border-0 text-end">$<?php echo $shippingCost?></td>
+                                        <td class="border-0 text-end">$<?php echo $shippingCost.$currency?></td>
                                     </tr>
                                     
                                     <tr>
                                         <th scope="row" colspan="4" class="border-0 text-end">
                                             Tax</th>
-                                        <td class="border-0 text-end">$<?php echo $taxCost?></td>
+                                        <td class="border-0 text-end">$<?php echo $taxCost.$currency?></td>
                                     </tr>
                                     
                                     <tr>
                                         <th scope="row" colspan="4" class="border-0 text-end">Total</th>
-                                        <td class="border-0 text-end"><h4 class="m-0 fw-semibold"><?php echo $subTotal?></h4></td>
+                                        <td class="border-0 text-end"><h4 class="m-0 fw-semibold"><?php echo $total.$currency?></h4></td>
                                     </tr>
                                     
                                 </tbody>
