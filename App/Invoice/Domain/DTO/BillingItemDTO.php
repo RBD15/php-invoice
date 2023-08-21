@@ -7,10 +7,12 @@ final class BillingItemDTO
   private $price;
   private $quantity;
   private $total;
+  private $description;
 
-  public function __construct($item, $price, $quantity, $total)
+  public function __construct($item, $price, $quantity,$description, $total)
   {
     $this->item = $item;
+    $this->description = $description;
     $this->price = $price;
     $this->quantity = $quantity;
     $this->total = $total;
@@ -36,6 +38,10 @@ final class BillingItemDTO
     return $this->total;
   }
 
+  public function getDescription()
+  {
+    return $this->description;
+  }
 }
 
 

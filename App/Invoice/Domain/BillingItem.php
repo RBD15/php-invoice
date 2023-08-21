@@ -8,10 +8,12 @@ use App\Invoice\Domain\DTO\BillingItemDTO;
 
 abstract class BillingItem
 {
-  // protected $quantity;
+  protected $quantity;
   protected $price;
   protected $currency;
   protected $name;
+  protected $description;
+  protected $total;
 
   private BillingItemDTO $dto;
   protected $client;
@@ -22,15 +24,22 @@ abstract class BillingItem
     $dotenv = Dotenv::createImmutable(__DIR__.'/../../../');
     $dotenv->load();
   }
+
+  protected abstract function init();
   
   public function getDto(): BillingItemDTO
   {
+    if(!isset($this->dto)){
+      var_dump('creado DTO');
+      $this->createDto();
+    }
+
     return $this->dto;
   }
 
-  public function setDto($item, $price, $quantity, $total)
+  private function createDto()
   {
-    $newDto = new BillingItemDTO($item, $price, $quantity, $total);
+    $newDto = new BillingItemDTO($this->name, $this->price,$this->quantity,$this->description, $this->total);
     $this->dto = $newDto;
   }
 }

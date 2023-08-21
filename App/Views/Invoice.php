@@ -42,7 +42,7 @@ foreach($billing->getItems() as $key => $item){
   <td>
       <div>
           <h5 class="text-truncate font-size-14 mb-1">'.$item->getItem().'</h5>
-          <p class="text-muted mb-0">Watch, Black</p>
+          <p class="text-muted mb-0">'.$item->getDescription().'</p>
       </div>
   </td>
   <td> $'. $item->getPrice().'</td>

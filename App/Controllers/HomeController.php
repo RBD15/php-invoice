@@ -8,8 +8,7 @@ final class HomeController
   public function index()
   {
     $billing = new Billing();
-    
-    include __DIR__.'/../Views/Invoice.php';
+    return $billing;
   }
 }
 
