@@ -2,7 +2,6 @@
 
 namespace App\Invoice\Domain;
 use App\Invoice\Domain\BillingItem;
-use App\Invoice\Domain\DTO\BillingItemDTO;
 
 final class ChatLicense extends BillingItem
 {
@@ -25,13 +24,6 @@ final class ChatLicense extends BillingItem
     $this->quantity = $data->data[0]->items;
     $this->total = ($this->quantity * $this->price). $this->currency;
   }
-  
-  // public function getDto(): BillingItemDTO
-  // {
-
-  //   $this->setDto($this->name, $this->price, $this->quantity,$this->description, $total);
-  //   return $this->getDto();
-  // }
 
 }
 

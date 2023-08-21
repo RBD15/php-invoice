@@ -12,7 +12,6 @@ use Slim\Factory\ServerRequestCreatorFactory;
 
 final class Requests
 {
-  // private $request;
   private $app;
   public function __construct()
   {
