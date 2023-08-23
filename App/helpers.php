@@ -5,8 +5,7 @@ function createResponse($data,$code){
   http_response_code($code);
   $response=$data;
   $response=json_encode(["message"=>$response]);
-  echo $response;
-  exit();
+  return $response;
 }
 
 ?>

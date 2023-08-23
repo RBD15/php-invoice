@@ -30,7 +30,6 @@ abstract class BillingItem
   public function getDto(): BillingItemDTO
   {
     if(!isset($this->dto)){
-      var_dump('creado DTO');
       $this->createDto();
     }
 

@@ -2,11 +2,9 @@
 
 namespace App\Requests;
 
-use Slim\Views\PhpRenderer;
-use GuzzleHttp\Psr7\Request;
+use App\Database\Repository;
+use App\Routes\Router;
 use Slim\Factory\AppFactory;
-use App\Controllers\HomeController;
-use Psr\Http\Message\ResponseInterface;
 use Slim\Factory\ServerRequestCreatorFactory;
 
 
@@ -18,18 +16,14 @@ final class Requests
   {
     AppFactory::setSlimHttpDecoratorsAutomaticDetection(false);
     ServerRequestCreatorFactory::setSlimHttpDecoratorsAutomaticDetection(false);
-  
+
     $this->app = AppFactory::create();
     // Add error middleware
     $this->app->addErrorMiddleware(true, true, true);
+    $repository = new Repository();
 
-    // Add routes
-    $this->app->get('/', function (Request $request, ResponseInterface $response) {
-        $controller = new HomeController();
-        $renderer = new PhpRenderer(__DIR__.'/../Views/');
-        return $renderer->render($response, "Invoice.php", ['billing'=>$controller->index()]);
-    });
-
+    $router = new Router($this->app);
+    $router->init();
   }
 
   public function handler()
