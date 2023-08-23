@@ -1,2 +1,6 @@
 /vendor
+<<<<<<< HEAD
+=======
+/local
+>>>>>>> v0.1.dev
 .env
