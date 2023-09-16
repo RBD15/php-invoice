@@ -3,8 +3,6 @@ namespace App\Invoice\Application;
 
 use App\Invoice\Domain\ChatLicense;
 use App\Invoice\Domain\DTO\BillingBodyDTO;
-use App\Invoice\Domain\WhatsappConnector;
-use App\Invoice\Domain\WhatsappInteraction;
 
 final class Billing
 {
@@ -16,8 +14,6 @@ final class Billing
     $this->currency = 'USD';
     $this->body = new BillingBodyDTO('Operation Bla bla', '123456789', date('Y-m-d'));
     array_push($this->billingItems,new ChatLicense());
-    array_push($this->billingItems,new WhatsappConnector());
-    array_push($this->billingItems,new WhatsappInteraction());
   }
 
   public function getItems() {

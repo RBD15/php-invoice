@@ -10,15 +10,14 @@ final class ChatLicense extends BillingItem
     parent::__construct();
     $this->price = 10;
     $this->currency = 'USD';
-    $this->name = 'Chat License';
+    $this->name = 'Name item';
     $this->description = 'S/N';
     $this->init();
   }
 
   protected function init(){
-    $server= $_ENV['APP_WOLKVOX_SERVER'];
-    $headers = ['headers'=>['wolkvox-token'=>$_ENV['APP_WOLKVOX_TOKEN']]];
-    $res = $this->client->request('GET','https://wv'.$server.'.wolkvox.com/api/v2/billing.php?api=chat_licenses',$headers);
+    $headers = ['headers'=>['Authorization'=>$_ENV['APP_TOKEN']]];
+    $res = $this->client->request('GET',$_ENV['APP_URL'],$headers);
     $data = json_decode($res->getBody()->getContents());
 
     $this->quantity = $data->data[0]->items;

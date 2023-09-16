@@ -20,6 +20,7 @@ abstract class BillingItem
 
   public function __construct()
   {
+    //Verify true if api rest uses ssl certificate
     $this->client = new Client(['verify' => false]);
     $dotenv = Dotenv::createImmutable(__DIR__.'/../../../');
     $dotenv->load();

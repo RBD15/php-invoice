@@ -11,6 +11,4 @@ final class HomeController
     return $billing;
   }
 }
-
-
 ?>
